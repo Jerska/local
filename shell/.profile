@@ -34,7 +34,7 @@
   eval `gdircolors $HOME/.dir_colors`
 
   # Aliases
-  unalias gls
+  unalias gls >/dev/null 2>&1
   alias ls='gls -1 --color=auto --group-directories-first'
   alias ll='gls -lh --color=auto --group-directories-first'
   alias la='gls -lAh --color=auto --group-directories-first'
