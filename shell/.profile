@@ -67,6 +67,11 @@
   alias bec='bundle exec cap'
 # }
 
+# JavaScript {
+  export NVM_DIR="$HOME/.nvm"
+  source "/usr/local/opt/nvm/nvm.sh"
+# }
+
 # Git {
   alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # }
