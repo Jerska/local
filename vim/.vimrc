@@ -76,6 +76,10 @@
   set shiftwidth=2
 " }
 
+" Terminal {
+  tnoremap <Esc><Esc> <C-\><C-n>
+" }
+
 " Copy {
   if has ('x') && has ('gui') " On Linux use + register for copy-paste
     set clipboard=unnamedplus
