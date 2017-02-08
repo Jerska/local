@@ -42,6 +42,18 @@
 # Vim {
   alias v='nvim'
   export EDITOR='nvim'
+  export VISUAL='nvim'
+# }
+
+# Less {
+  export PAGER='less'
+  export LESS='-g -i -M -R -S -w -z-4'
+# }
+
+# Browser {
+  if [[ "$OSTYPE" == darwin* ]]; then
+    export BROWSER='open'
+  fi
 # }
 
 # Ruby {
