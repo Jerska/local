@@ -5,4 +5,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'bling/vim-airline'
 " }
 
+" Search {
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+" }
+
 call plug#end()

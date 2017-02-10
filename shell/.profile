@@ -83,6 +83,10 @@
   alias rg='/usr/local/bin/rg'
 # }
 
+# FZF {
+  export FZF_DEFAULT_COMMAND='ripgrep --files --hidden --follow --glob "!.git/*"'
+# }
+
 # Git {
   alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # }

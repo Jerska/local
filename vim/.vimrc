@@ -175,7 +175,6 @@
   let g:airline_powerline_fonts = 1
 " }
 
-
 " Syntastic {
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
@@ -198,4 +197,25 @@
   let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
   let g:syntastic_haml_checkers = ['haml_lint']
+" }
+
+" rg {
+  if executable('ripgrep')
+    set grepprg=ripgrep\ --vimgrep
+    " FZF {
+      command! -bang -nargs=? -complete=dir Files
+        \ call fzf#vim#files(<q-args>,
+        \   <bang>0 ? fzf#vim#with_preview('right:50%')
+        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+        \   <bang>0)
+      command! -bang -nargs=* Find
+        \ call fzf#vim#grep(
+        \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
+        \   <bang>0 ? fzf#vim#with_preview('right:50%')
+        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+        \   <bang>0)
+      map <C-o> <ESC>:Files!<CR>
+      map <C-p> <ESC>:Find!<CR>
+    " }
+  endif
 " }

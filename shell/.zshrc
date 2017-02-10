@@ -5,3 +5,6 @@ fi
 
 # Source .profile
 [[ -e $HOME/.profile ]] && source $HOME/.profile
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
