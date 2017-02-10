@@ -79,6 +79,10 @@
   eval "$(pyenv virtualenv-init -)"
 # }
 
+# RipGrep {
+  alias rg='/usr/local/bin/rg'
+# }
+
 # Git {
   alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # }
