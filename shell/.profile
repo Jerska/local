@@ -98,6 +98,9 @@
       functions
     else
       if [ -f $1 ] ; then
+        folder=`echo $1 | awk -F . '{ print $1 }'`
+        mkdir $folder
+        cd $folder
         case $1 in
           *.tar.bz2)   tar xvjf ../$1    ;;
           *.tar.gz)    tar xvzf ../$1    ;;
