@@ -14,4 +14,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
 " }
 
+" Languages {
+  " JavaScript {
+    Plug 'pangloss/vim-javascript'
+    Plug 'mxw/vim-jsx'
+  " }
+" }
+
 call plug#end()
