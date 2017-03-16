@@ -78,6 +78,7 @@
   set expandtab                                  " Tabs to spaces
   set tabstop=2                                  " 2 spaces instead of tabs
   set shiftwidth=2
+  set synmaxcol=250                              " Syntax check should not check very long lines
 " }
 
 " Terminal {
