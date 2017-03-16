@@ -5,6 +5,10 @@
 " Vim defaults {
   let mapleader = ','
   scriptencoding utf-8
+
+  " Language
+  set langmenu=en_US
+  let $LANG = 'en_US'
 " }
 
 " vim-plug {
