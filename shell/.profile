@@ -91,6 +91,10 @@
   alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # }
 
+# Heroku {
+  alias heroku-rebuild="git commit --allow-empty -m 'empty commit' && git push heroku master && git reset HEAD~1 && git push -f heroku master"
+# }
+
 # Extraction {
   add_function ex filename 'extracts a file in almost any format'
   ex () {
