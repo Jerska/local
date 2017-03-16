@@ -174,6 +174,10 @@
   cmap w!! w !sudo tee % >/dev/null
 " }
 
+" Deoplete {
+  let g:deoplete#enable_at_startup = 1
+" }
+
 " Airline {
   set laststatus=2                " Or airline won't activate before a new split
 
