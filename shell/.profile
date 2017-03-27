@@ -57,6 +57,10 @@
   fi
 # }
 
+# Travis {
+  [ -f /Users/jerska/.travis/travis.sh ] && source /Users/jerska/.travis/travis.sh
+# }
+
 # Ruby {
   # RVM
   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
