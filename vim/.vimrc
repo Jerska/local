@@ -166,6 +166,10 @@
   endif
 " }
 
+" NerdTree {
+   map <Leader>n <plug>NERDTreeTabsToggle<CR>
+" }
+
 " Compilation {
   autocmd QuickFixCmdPost * nested cwindow | redraw!
 " }

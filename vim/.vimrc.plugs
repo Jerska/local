@@ -13,6 +13,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " }
 
+" Tree {
+  Plug 'scrooloose/nerdtree'
+  Plug 'jistr/vim-nerdtree-tabs'
+" }
+
 " Git {
   Plug 'tpope/vim-fugitive'
 " }
