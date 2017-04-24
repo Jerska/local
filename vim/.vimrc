@@ -211,6 +211,9 @@
 
   let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
+  let g:ycm_python_binary_path = 'python'
+  let g:syntastic_python_checkers = ['flake8', 'python']
+
   let g:syntastic_haml_checkers = ['haml_lint']
 " }
 
