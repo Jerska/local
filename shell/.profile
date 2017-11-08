@@ -100,6 +100,10 @@
   alias heroku-rebuild="git commit --allow-empty -m 'empty commit' && git push heroku master && git reset HEAD~1 && git push -f heroku master"
 # }
 
+# Algolia {
+  export PATH="$PATH:$HOME/algolia/bin"
+# }
+
 # Extraction {
   add_function ex filename 'extracts a file in almost any format'
   ex () {
