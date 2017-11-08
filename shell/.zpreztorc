@@ -36,11 +36,13 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'git' \
   'osx' \
-  'rails' \
-  'ruby' \
-  'ssh' \
   'syntax-highlighting' \
   'prompt'
+
+#
+# directory
+#
+setopt CLOBBER
 
 #
 # Autosuggestions
