@@ -1,5 +1,7 @@
 " Environment {
   set nocompatible
+  set termguicolors
+  set t_Co=256
 " }
 
 " Vim defaults {
@@ -51,7 +53,7 @@
   syntax enable
   set background=dark
 
-  silent! colorscheme solarized
+  colorscheme solarized8_dark
 
   highlight Search cterm=NONE ctermfg=7 ctermbg=4
 " }

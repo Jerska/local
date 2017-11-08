@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Visual {
-  Plug 'flazz/vim-colorschemes'
+  Plug 'lifepillar/vim-solarized8'
   Plug 'bling/vim-airline'
 " }
 
