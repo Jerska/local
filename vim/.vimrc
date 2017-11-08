@@ -221,19 +221,8 @@
   if executable('ripgrep')
     set grepprg=ripgrep\ --vimgrep
     " FZF {
-      command! -bang -nargs=? -complete=dir Files
-        \ call fzf#vim#files(<q-args>,
-        \   <bang>0 ? fzf#vim#with_preview('right:50%')
-        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-        \   <bang>0)
-      command! -bang -nargs=* Find
-        \ call fzf#vim#grep(
-        \   'ripgrep --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-        \   <bang>0 ? fzf#vim#with_preview('right:50%')
-        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-        \   <bang>0)
-      map <C-o> <ESC>:Files!<CR>
-      map <C-p> <ESC>:Find!<CR>
+      let g:ctrlp_user_command = 'ripgrep %s --files --hidden --follow --color=never --glob "!.git/*"'
+      let g:ctrlp_use_caching = 0
     " }
   endif
 " }

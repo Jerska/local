@@ -15,6 +15,3 @@ alias rmi="${aliases[rm]:-rm} -i"
 
 # Source .profile
 [[ -e $HOME/.profile ]] && source $HOME/.profile
-
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
