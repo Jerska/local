@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
 " }
 
 " Git {
+  Plug 'jreybert/vimagit'
   Plug 'tpope/vim-fugitive'
 " }
 
