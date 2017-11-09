@@ -224,6 +224,7 @@
   let g:syntastic_coffee_coffeelint_args = "--file " . $HOME . "/.coffeelint.json"
 
   let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+  let g:syntastic_ruby_rubocop_args=['-D']
 
   let g:ycm_python_binary_path = g:python3_host_prog
   let g:syntastic_python_checkers = ['flake8', 'python']
