@@ -270,6 +270,7 @@
 " Markdown {
   let g:markdown_fenced_languages = [
     \ 'coffee',
+    \ 'html',
     \ 'css',
     \ 'erb=eruby',
     \ 'javascript',
