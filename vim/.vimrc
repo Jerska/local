@@ -86,6 +86,7 @@
   set tabstop=2                                  " 2 spaces instead of tabs
   set shiftwidth=2
   set synmaxcol=250                              " Syntax check should not check very long lines
+  set autoread                                   " Automatically reload files when checktime is called and file changed
 " }
 
 " Terminal {
@@ -212,6 +213,12 @@
 
   let g:syntastic_html_checkers = ['w3']
   let g:syntastic_javascript_checkers = ['eslint']
+
+  " autofix with eslint
+  let g:syntastic_javascript_eslint_args = ['--fix']
+  function! SyntasticCheckHook(errors)
+    checktime
+  endfunction
 
   let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
   let g:syntastic_coffee_coffeelint_args = "--file " . $HOME . "/.coffeelint.json"
