@@ -13,6 +13,11 @@
   let $LANG = 'en_US'
 " }
 
+" Python {
+  let g:python_host_prog = '/Users/jerska/.pyenv/versions/py2/bin/python'
+  let g:python3_host_prog = '/Users/jerska/.pyenv/versions/py3/bin/python'
+" }
+
 " vim-plug {
   if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -213,7 +218,7 @@
 
   let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-  let g:ycm_python_binary_path = 'python'
+  let g:ycm_python_binary_path = g:python3_host_prog
   let g:syntastic_python_checkers = ['flake8', 'python']
 
   let g:syntastic_haml_checkers = ['haml_lint']
