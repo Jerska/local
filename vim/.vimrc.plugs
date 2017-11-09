@@ -43,8 +43,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'kchmck/vim-coffee-script'
   " }
 
-  " SCSS {
+  " CSS {
     Plug 'cakebaker/scss-syntax.vim'
+    Plug 'ap/vim-css-color'
   " }
 
   " Slim {
