@@ -7,6 +7,8 @@
 " Vim defaults {
   let mapleader = ','
   scriptencoding utf-8
+  set timeoutlen=200
+  set ttimeoutlen=0
 
   " Language
   set langmenu=en_US
@@ -38,13 +40,13 @@
   set mouse=a
   set mousehide
 
-  map <A-Down> <C-W>j
-  map <A-Up> <C-W>k
-  map <A-Right> <C-W>l
-  map <A-Left> <C-W>h
+  map <S-Down> <C-W>j
+  map <S-Up> <C-W>k
+  map <S-Right> <C-W>l
+  map <S-Left> <C-W>h
 
-  map <C-Right> <ESC>:tabnext<CR>
-  map <C-Left> <ESC>:tabprev<CR>
+  map <S-Left><S-Left> <ESC>:tabprev<CR>
+  map <S-Right><S-Right> <ESC>:tabnext<CR>
   map <C-t> <ESC>:tabnew<CR>
   map <C-y> <ESC>:tabclose<CR>
 
@@ -58,7 +60,7 @@
   syntax enable
   set background=dark
 
-  colorscheme solarized8_dark
+  colorscheme solarized8
 
   highlight Search cterm=NONE ctermfg=7 ctermbg=4
 " }
@@ -85,7 +87,7 @@
   set expandtab                                  " Tabs to spaces
   set tabstop=2                                  " 2 spaces instead of tabs
   set shiftwidth=2
-  set synmaxcol=250                              " Syntax check should not check very long lines
+  set synmaxcol=1024                             " Syntax check should not check very long lines
   set autoread                                   " Automatically reload files when checktime is called and file changed
 " }
 
@@ -188,6 +190,7 @@
 
 " Deoplete {
   let g:deoplete#enable_at_startup = 1
+  let g:deoplete#max_list = 10
 
   " See also Tern
 " }
@@ -196,48 +199,34 @@
   set laststatus=2                " Or airline won't activate before a new split
 
   let g:airline_powerline_fonts = 1
+  let g:airline_theme='solarized'
+  let g:airline_solarized_bg='dark'
 " }
 
-" Syntastic {
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
+" Ale {
+  let g:ale_linters_explicit = 1
+  let g:ale_fix_on_save = 0
 
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-
-  let g:syntastic_cpp_compiler = 'clang++'
-  let g:syntastic_cpp_compiler_options = ' -std=c++11'
-
-  let g:syntastic_html_checkers = ['w3']
-  let g:syntastic_javascript_checkers = ['eslint']
-
-  " autofix with eslint
-  let g:syntastic_javascript_eslint_args = ['--fix']
-  function! SyntasticCheckHook(errors)
-    checktime
-  endfunction
-
-  let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
-  let g:syntastic_coffee_coffeelint_args = "--file " . $HOME . "/.coffeelint.json"
-
-  let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-  let g:syntastic_ruby_rubocop_args=['-D']
-
-  let g:ycm_python_binary_path = g:python3_host_prog
-  let g:syntastic_python_checkers = ['flake8', 'python']
-
-  let g:syntastic_haml_checkers = ['haml_lint']
+  let g:ale_linters = {
+    \ 'javascript': ['eslint'],
+    \ 'scss': ['stylelint']
+    \ }
+  let g:ale_fixers = {
+    \ 'javascript': ['eslint'],
+    \ 'typescript': ['prettier'],
+    \ 'scss': ['stylelint', 'prettier']
+    \ }
 " }
 
 " rg {
   if executable('ripgrep')
     set grepprg=ripgrep\ --vimgrep
-    " FZF {
+    " CtrlP {
+      let g:ctrlp_user_command_async = 1
       let g:ctrlp_user_command = 'ripgrep %s --files --hidden --follow --color=never --glob "!.git/*"'
       let g:ctrlp_use_caching = 0
+    " }
+    " FZF {
       " command! -bang -nargs=? -complete=dir Files
       "   \ call fzf#vim#files(<q-args>,
       "   \   <bang>0 ? fzf#vim#with_preview('right:50%')
@@ -263,6 +252,7 @@
 " Tern {
   " Use deoplete.
   let g:tern_request_timeout = 1
+  let g:deoplete#sources#ternjs#types = 1
   " let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
 
   "Add extra filetypes
@@ -293,4 +283,15 @@
     \ 'sass',
     \ 'xml'
     \ ]
+" }
+
+" Salt {
+  augroup filetypedetect
+    au BufRead,BufNewFile *.sls setfiletype yaml
+  augroup END
+" }
+
+" Project-local .vimrc s {
+  set exrc
+  set secure
 " }
