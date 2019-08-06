@@ -9,6 +9,7 @@ ln -sf $DIR/.dir_colors $HOME/.dir_colors
 ln -sf $DIR/.bashrc $HOME/.bashrc
 ln -sf $DIR/.zshrc $HOME/.zshrc
 ln -sf $DIR/.zpreztorc $HOME/.zpreztorc
+ln -sf $DIR/.p10k.zsh $HOME/.p10k.zsh
 
 # If you've installed prezto, those files are useless
 rm -f ~/.zlogin
