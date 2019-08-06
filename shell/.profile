@@ -92,16 +92,21 @@
 
 # JavaScript {
   export NVM_DIR="$HOME/.nvm"
-  source "/usr/local/opt/nvm/nvm.sh"
-  export PATH="./node_modules/.bin/:$PATH"
+  NVM_PATH="${NVM_DIR}/nvm.sh"
+  if [[ -f $NVM_PATH ]]; then
+    export PATH="./node_modules/.bin/:$PATH"
+    source $NVM_PATH
+  fi
 # }
 
 # Python {
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+  if command -v pyenv; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+  fi
   add_function pyenv-exec 'env-name command' 'execute a command with a specific pyenv version'
   pyenv-exec () (
     if [ -z "$1" ]; then
