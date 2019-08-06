@@ -1,3 +1,16 @@
+# To profile what takes time, uncomment this and use
+# set -x
+# set +x
+# around the code block you want to profile
+
+# PS4='+ $(date "+%s.%N")\011 '
+# exec 3>&2
+
+# Locale {
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+# }
+
 # Colors {
   pur='\033[35m'
   cya='\033[36m'
@@ -27,6 +40,22 @@
   functions () {
     echo -e "$function_usages"
   }
+# }
+
+# Typos {
+  alias sl=ls
+  alias gh=fg
+# }
+
+# OSX {
+  add_function sha256sum filename 'compute a sha256sum of the input file'
+  sha256sum () {
+    shasum -a 256 "$@"
+  }
+# }
+
+# GPG {
+  export GPG_TTY=$(tty)
 # }
 
 # ls {
@@ -61,16 +90,6 @@
   [ -f /Users/jerska/.travis/travis.sh ] && source /Users/jerska/.travis/travis.sh
 # }
 
-# Ruby {
-  # RVM
-  export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-  # Aliases
-  alias ber='bundle exec rake'
-  alias bec='bundle exec cap'
-# }
-
 # JavaScript {
   export NVM_DIR="$HOME/.nvm"
   source "/usr/local/opt/nvm/nvm.sh"
@@ -78,10 +97,29 @@
 # }
 
 # Python {
+  export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
+  add_function pyenv-exec 'env-name command' 'execute a command with a specific pyenv version'
+  pyenv-exec () (
+    if [ -z "$1" ]; then
+      functions
+    else
+      pyenv shell $1
+      shift
+      "$@"
+    fi
+  )
+# }
+
+# Salt {
+  salt-ssh-func () (
+    cd $HOME/code/salt && pyenv-exec py2 "salt-ssh" "$@"
+  )
+  alias salt-ssh="salt-ssh-func"
+  alias salt="salt-ssh-func"
 # }
 
 # RipGrep {
@@ -93,7 +131,12 @@
 # }
 
 # Git {
-  alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  alias gps="git push -u"
+  alias gpl="git pull"
+  alias gst="git status"
+  alias gcm="git commit"
+  alias gco="git checkout"
+  alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # }
 
 # Heroku {
@@ -137,4 +180,14 @@
       fi
     fi
   }
+# }
+
+# Ruby {
+  # RVM
+  export PATH="$PATH:$HOME/.rvm/bin"
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+  # Aliases
+  alias ber='bundle exec rake'
+  alias bec='bundle exec cap'
 # }
