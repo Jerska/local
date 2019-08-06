@@ -1,2 +1,3 @@
-shell/.profile.private
-powerlevel10k
+/shell/.profile.private
+/powerlevel10k
+/google-cloud-sdk

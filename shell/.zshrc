@@ -30,5 +30,11 @@ alias rmi="${aliases[rm]:-rm} -i"
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }
 
+# GCloud SDK {
+  GCSDK_PATH="$HOME/local/google-cloud-sdk"
+  [ -f "$GCSDK_PATH/path.zsh.inc" ] && source "$GCSDK_PATH/path.zsh.inc"
+  [ -f "$GCSDK_PATH/completion.zsh.inc" ] && source "$GCSDK_PATH/completion.zsh.inc"
+# }
+
 # Source .profile
 [[ -e $HOME/.profile ]] && source $HOME/.profile
