@@ -191,3 +191,7 @@
   alias ber='bundle exec rake'
   alias bec='bundle exec cap'
 # }
+
+# Private {
+  source $HOME/.profile.private
+# }
