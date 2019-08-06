@@ -14,3 +14,8 @@ ln -sf $DIR/.zpreztorc $HOME/.zpreztorc
 rm -f ~/.zlogin
 rm -f ~/.zlogout
 rm -f ~/.zprofile
+
+echo
+echo "You need to:"
+echo "  - fill local/shell/.profile.private"
+echo "  - clone powerlevel10k in local/"
