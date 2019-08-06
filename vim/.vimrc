@@ -219,11 +219,11 @@
 " }
 
 " rg {
-  if executable('ripgrep')
-    set grepprg=ripgrep\ --vimgrep
+  if executable('rg')
+    set grepprg=rg\ --vimgrep
     " CtrlP {
       let g:ctrlp_user_command_async = 1
-      let g:ctrlp_user_command = 'ripgrep %s --files --hidden --follow --color=never --glob "!.git/*"'
+      let g:ctrlp_user_command = 'rg %s --files --hidden --follow --color=never --glob "!.git/*"'
       let g:ctrlp_use_caching = 0
     " }
     " FZF {
