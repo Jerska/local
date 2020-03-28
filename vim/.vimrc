@@ -9,6 +9,8 @@
   scriptencoding utf-8
   set timeoutlen=200
   set ttimeoutlen=0
+  set updatetime=500
+  set noshowmode
 
   " Language
   set langmenu=en_US
@@ -217,6 +219,15 @@
     \ 'scss': ['stylelint', 'prettier']
     \ }
 " }
+"
+" nvim typescript {
+  let g:nvim_typescript#diagnostics_enable=0
+  let g:nvim_typescript#max_completion_detail=100
+" }
+
+" echodoc {
+  let g:echodoc_enable_at_startup = 1
+" }
 
 " rg {
   if executable('rg')
@@ -227,19 +238,7 @@
       let g:ctrlp_use_caching = 0
     " }
     " FZF {
-      " command! -bang -nargs=? -complete=dir Files
-      "   \ call fzf#vim#files(<q-args>,
-      "   \   <bang>0 ? fzf#vim#with_preview('right:50%')
-      "   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      "   \   <bang>0)
-      " command! -bang -nargs=* Find
-      "   \ call fzf#vim#grep(
-      "   \   'ripgrep --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
-      "   \   <bang>0 ? fzf#vim#with_preview('right:50%')
-      "   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      "   \   <bang>0)
-      " map <C-o> <ESC>:Files!<CR>
-      " map <C-p> <ESC>:Find!<CR>
+      map <C-o> <ESC>:Rg<CR>
     " }
   endif
 " }
@@ -283,6 +282,11 @@
     \ 'sass',
     \ 'xml'
     \ ]
+" }
+
+" SQL {
+  " Disable dbext
+   let g:omni_sql_no_default_maps = 1
 " }
 
 " Salt {

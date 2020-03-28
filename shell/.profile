@@ -91,12 +91,40 @@
 # }
 
 # JavaScript {
+  export PATH="./node_modules/.bin/:$PATH"
   export NVM_DIR="$HOME/.nvm"
   NVM_PATH="${NVM_DIR}/nvm.sh"
+
+  # Lazily initialize nvm to keep shell start up time fast.
   if [[ -f $NVM_PATH ]]; then
-    export PATH="./node_modules/.bin/:$PATH"
-    source $NVM_PATH
+
+    # https://github.com/creationix/nvm/issues/860
+    declare -a NODE_GLOBALS=(`find $NVM_DIR/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+
+    NODE_GLOBALS+=("node")
+    NODE_GLOBALS+=("nvm")
+    NODE_GLOBALS+=("vim")
+    NODE_GLOBALS+=("nvim")
+
+    load_nvm () {
+      # echo "Loading NVM..."
+      [ -s "$NVM_PATH" ] && source "$NVM_PATH"
+      # echo "Loaded NVM"
+    }
+
+    unhook_nvm_load () {
+      # echo "Unhooking NVM Lazy Loader"
+      for cmd in "${NODE_GLOBALS[@]}"; do
+        unset -f "${cmd}"
+      done
+      # echo "Unhooked NVM Lazy Loader"
+    }
+
+    for cmd in "${NODE_GLOBALS[@]}"; do
+      eval "function ${cmd} () { unhook_nvm_load; load_nvm; ${cmd} \$@; }"
+    done
   fi
+
 # }
 
 # Python {
@@ -117,6 +145,8 @@
       "$@"
     fi
   )
+  alias python2="pyenv-exec py2 python2"
+  alias python3="pyenv-exec py3 python3"
 # }
 
 # Salt {
@@ -142,6 +172,31 @@
   alias gcm="git commit"
   alias gco="git checkout"
   alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+  # Prune
+  add_function gprune '' 'prunes all branches that do not exist on remote'
+
+  gtestprune() {
+    git branch -vv | awk '/: gone]/{print $1}' | grep --color=never .
+  }
+
+  gprune () {
+    echo 'Automatic prune'
+    git fetch -p
+    echo 'Those branches will be deleted'
+    gtestprune
+    echo -en '\nAre you sure? (y/N) '
+    read yn
+    if [[ "$yn" == "y" ]]; then
+      gtestprune | xargs git branch -D
+      echo 'Completed pruning'
+      echo
+      echo "Remaining branches"
+      git --no-pager branch
+    else
+      echo 'Cancelled pruning'
+    fi
+  }
 # }
 
 # Heroku {
