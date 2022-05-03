@@ -6,6 +6,8 @@
 # PS4='+ $(date "+%s.%N")\011 '
 # exec 3>&2
 
+set +o noclobber
+
 # Locale {
   export LC_ALL=en_US.UTF-8
   export LANG=en_US.UTF-8
