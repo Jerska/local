@@ -70,7 +70,13 @@ set +o noclobber
 # }
 
 # Vim {
-  alias v='nvim'
+  v() {
+    if command -v nvim >/dev/null 2>&1; then
+      nvim "$@"
+    else
+      vim "$@"
+    fi
+  }
   export EDITOR='nvim'
   export VISUAL='nvim'
 # }
