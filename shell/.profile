@@ -150,6 +150,13 @@ set +o noclobber
   )
 # }
 
+# Go {
+  export GOPATH=$HOME/go
+  export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+  export GO111MODULE=on
+  export GOPROXY="https://proxy.golang.org,direct"
+# }
+
 # Salt {
   salt-ssh-func () (
     cd $HOME/code/salt && pyenv-exec py2 "salt-ssh" "$@"
