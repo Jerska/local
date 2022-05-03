@@ -270,3 +270,6 @@ set +o noclobber
   alias kn=k9s
 # }
 
+# Z {
+  source "$HOME/local/shell/z.sh"
+# }
