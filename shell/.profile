@@ -64,9 +64,13 @@ set +o noclobber
   source "$HOME/local/shell/lscolors.sh"
   # Aliases
   unalias gls >/dev/null 2>&1
-  alias ls='gls -1 --color=auto --group-directories-first'
-  alias ll='gls -lh --color=auto --group-directories-first'
-  alias la='gls -lAh --color=auto --group-directories-first'
+  local ls_command="ls"
+  if command -v gls >/dev/null 2>&1; then
+    ls_command="gls"
+  fi
+  alias ls="$ls_command -1 --color=auto --group-directories-first"
+  alias ll="$ls_command -lh --color=auto --group-directories-first"
+  alias la="$ls_command -lAh --color=auto --group-directories-first"
 # }
 
 # Vim {
