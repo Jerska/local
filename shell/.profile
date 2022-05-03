@@ -256,3 +256,10 @@ set +o noclobber
 # Private {
   source $HOME/.profile.private
 # }
+
+# Kubernetes {
+  alias k=kubectl
+  alias kw=~/local/shell/kubewatch.sh
+  alias kn=k9s
+# }
+

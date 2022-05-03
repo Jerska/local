@@ -36,5 +36,14 @@ alias rmi="${aliases[rm]:-rm} -i"
   [ -f "$GCSDK_PATH/completion.zsh.inc" ] && source "$GCSDK_PATH/completion.zsh.inc"
 # }
 
+# kubectl
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+
+# Completion {
+autoload -U compinit; compinit
+# }
+
 # Source .profile
 [[ -e $HOME/.profile ]] && source $HOME/.profile
