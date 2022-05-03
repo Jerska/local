@@ -61,9 +61,7 @@ set +o noclobber
 # }
 
 # ls {
-  # Dircolors (see .dir_colors)
-  eval `gdircolors $HOME/.dir_colors`
-
+  source "$HOME/local/shell/lscolors.sh"
   # Aliases
   unalias gls >/dev/null 2>&1
   alias ls='gls -1 --color=auto --group-directories-first'
