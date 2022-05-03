@@ -264,6 +264,10 @@ set +o noclobber
   source $HOME/.profile.private
 # }
 
+# Docker {
+  alias dcup="docker-compose up"
+# }
+
 # Kubernetes {
   alias k=kubectl
   alias kw=~/local/shell/kubewatch.sh
