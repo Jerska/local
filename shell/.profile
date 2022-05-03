@@ -127,6 +127,7 @@ set +o noclobber
     done
   fi
 
+  alias y="yarn"
 # }
 
 # Python {
@@ -147,8 +148,6 @@ set +o noclobber
       "$@"
     fi
   )
-  alias python2="pyenv-exec py2 python2"
-  alias python3="pyenv-exec py3 python3"
 # }
 
 # Salt {
