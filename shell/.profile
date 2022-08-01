@@ -100,42 +100,15 @@ set +o noclobber
   [ -f /Users/jerska/.travis/travis.sh ] && source /Users/jerska/.travis/travis.sh
 # }
 
+# asdf {
+  alias qsdf="asdf"
+  [ -f /usr/local/opt/asdf/libexec/asdf.sh ] && source /usr/local/opt/asdf/libexec/asdf.sh
+# }
+
 # JavaScript {
   export PATH="./node_modules/.bin/:$PATH"
-  export NVM_DIR="$HOME/.nvm"
-  NVM_PATH="${NVM_DIR}/nvm.sh"
-
-  # Lazily initialize nvm to keep shell start up time fast.
-  if [[ -f $NVM_PATH ]]; then
-
-    # https://github.com/creationix/nvm/issues/860
-    declare -a NODE_GLOBALS=(`find $NVM_DIR/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-
-    NODE_GLOBALS+=("node")
-    NODE_GLOBALS+=("nvm")
-    NODE_GLOBALS+=("vim")
-    NODE_GLOBALS+=("nvim")
-
-    load_nvm () {
-      # echo "Loading NVM..."
-      [ -s "$NVM_PATH" ] && source "$NVM_PATH"
-      # echo "Loaded NVM"
-    }
-
-    unhook_nvm_load () {
-      # echo "Unhooking NVM Lazy Loader"
-      for cmd in "${NODE_GLOBALS[@]}"; do
-        unset -f "${cmd}"
-      done
-      # echo "Unhooked NVM Lazy Loader"
-    }
-
-    for cmd in "${NODE_GLOBALS[@]}"; do
-      eval "function ${cmd} () { unhook_nvm_load; load_nvm; ${cmd} \$@; }"
-    done
-  fi
-
   alias y="yarn"
+
 # }
 
 # Python {

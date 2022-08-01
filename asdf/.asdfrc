@@ -1,0 +1,2 @@
+# Node.js .nvmrc & .node-version support
+legacy_version_file = yes
