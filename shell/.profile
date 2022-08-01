@@ -64,7 +64,7 @@ set +o noclobber
   source "$HOME/local/shell/lscolors.sh"
   # Aliases
   unalias gls >/dev/null 2>&1
-  local ls_command="ls"
+  ls_command="ls"
   if command -v gls >/dev/null 2>&1; then
     ls_command="gls"
   fi
