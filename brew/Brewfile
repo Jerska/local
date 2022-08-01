@@ -1,4 +1,5 @@
 brew "llvm"
+brew "gcc"
 
 brew "openssl"
 brew "readline"
