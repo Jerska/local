@@ -8,8 +8,6 @@
 
 set +o noclobber
 
-export HOMEBREW_PREFIX="/usr/local"
-
 # Locale {
   export LC_ALL=en_US.UTF-8
   export LANG=en_US.UTF-8
@@ -56,6 +54,8 @@ export HOMEBREW_PREFIX="/usr/local"
   sha256sum () {
     shasum -a 256 "$@"
   }
+  export HOMEBREW_PREFIX="/usr/local"
+  export PATH="${HOMEBREW_PREFIX}/bin:$PATH"
 # }
 
 # GPG {
