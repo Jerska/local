@@ -118,6 +118,10 @@ set +o noclobber
   alias y="yarn"
 # }
 
+# Python {
+  export PYTHON_BUILD_HOMEBREW_OPENSSL_FORMULA="openssl@3"
+# }
+
 # OpenSSL {
   OPENSSL_DIR="${HOMEBREW_PREFIX}/opt/openssl@3"
   if [ -d "$OPENSSL_DIR" ]; then
