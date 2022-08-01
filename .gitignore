@@ -1,3 +1,4 @@
 /shell/.profile.private
 /powerlevel10k
 /google-cloud-sdk
+/brew/Brewfile.lock.json
