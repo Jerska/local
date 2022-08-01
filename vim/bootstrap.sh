@@ -5,4 +5,4 @@ mkdir -p $HOME/.vim
 ln -sf $DIR/.vimrc $HOME/.vimrc
 ln -sf $DIR/.vimrc.plugs $HOME/.vimrc.plugs
 
-vim +PlugInstall
+vim +PlugInstall!
