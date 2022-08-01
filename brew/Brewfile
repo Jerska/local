@@ -8,8 +8,11 @@ brew "coreutils"
 brew "jq" # https://stedolan.github.io/jq/
 brew "gnu-sed"
 
+brew "vim"
 brew "neovim"
 brew "asdf"
+brew "htop"
+brew "ripgrep"
 
 tap "homebrew/cask-fonts"
 cask "font-sauce-code-pro-nerd-font"
