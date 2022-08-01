@@ -54,7 +54,7 @@ set +o noclobber
   sha256sum () {
     shasum -a 256 "$@"
   }
-  export HOMEBREW_PREFIX="/usr/local"
+  export HOMEBREW_PREFIX="$(brew --prefix)"
   export PATH="${HOMEBREW_PREFIX}/bin:$PATH"
 # }
 
