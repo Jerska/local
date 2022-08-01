@@ -6,3 +6,5 @@ brew "readline"
 brew "coreutils"
 brew "jq" # https://stedolan.github.io/jq/
 brew "gnu-sed"
+
+brew "neovim"
