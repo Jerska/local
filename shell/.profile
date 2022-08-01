@@ -8,6 +8,8 @@
 
 set +o noclobber
 
+export HOMEBREW_PREFIX="/usr/local"
+
 # Locale {
   export LC_ALL=en_US.UTF-8
   export LANG=en_US.UTF-8
@@ -102,7 +104,7 @@ set +o noclobber
 
 # asdf {
   alias qsdf="asdf"
-  [ -f /usr/local/opt/asdf/libexec/asdf.sh ] && source /usr/local/opt/asdf/libexec/asdf.sh
+  [ -f ${HOMEBREW_PREFIX}/opt/asdf/libexec/asdf.sh ] && source ${HOMEBREW_PREFIX}/opt/asdf/libexec/asdf.sh
 # }
 
 # JavaScript {
@@ -111,7 +113,7 @@ set +o noclobber
 # }
 
 # OpenSSL {
-  OPENSSL_DIR="/usr/local/opt/openssl@3"
+  OPENSSL_DIR="${HOMEBREW_PREFIX}/opt/openssl@3"
   if [ -d "$OPENSSL_DIR" ]; then
     export PATH="${OPENSSL_DIR}/bin:$PATH"
     export LDFLAGS="-L${OPENSSL_DIR}/lib $LDFLAGS"
@@ -122,7 +124,7 @@ set +o noclobber
 # }
 
 # Readline {
-  READLINE_DIR="/usr/local/opt/readline"
+  READLINE_DIR="${HOMEBREW_PREFIX}/opt/readline"
   if [ -d "$READLINE_DIR" ]; then
     export LDFLAGS="-L${READLINE_DIR}/lib $LDFLAGS"
     export CFLAGS="-I${READLINE_DIR}/include $CFLAGS"
@@ -147,7 +149,7 @@ set +o noclobber
 # }
 
 # RipGrep {
-  alias rg='/usr/local/bin/rg'
+  alias rg="${HOMEBREW_PREFIX}/bin/rg"
 # }
 
 # FZF {
