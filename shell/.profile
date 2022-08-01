@@ -54,8 +54,13 @@ set +o noclobber
   sha256sum () {
     shasum -a 256 "$@"
   }
-  export HOMEBREW_PREFIX="$(brew --prefix)"
-  export PATH="${HOMEBREW_PREFIX}/bin:$PATH"
+  if [ -d "/opt/homebrew" ]; then
+    export HOMEBREW_PREFIX="/opt/homebrew"
+    export PATH="${HOMEBREW_PREFIX}/bin:$PATH"
+  else
+    export HOMEBREW_PREFIX="/usr/local"
+  fi
+  export PATH="/usr/local:$PATH"
 # }
 
 # GPG {
