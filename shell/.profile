@@ -108,28 +108,27 @@ set +o noclobber
 # JavaScript {
   export PATH="./node_modules/.bin/:$PATH"
   alias y="yarn"
-
 # }
 
-# Python {
-  export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  if command -v pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-    PATH="$(pyenv root)/shims:$PATH"
+# OpenSSL {
+  OPENSSL_DIR="/usr/local/opt/openssl@3"
+  if [ -d "$OPENSSL_DIR" ]; then
+    export PATH="${OPENSSL_DIR}/bin:$PATH"
+    export LDFLAGS="-L${OPENSSL_DIR}/lib $LDFLAGS"
+    export CFLAGS="-I${OPENSSL_DIR}/include $CFLAGS"
+    export CPPFLAGS="-I${OPENSSL_DIR}/include $CPPFLAGS"
+    export PKG_CONFIG_PATH="${OPENSSL_DIR}/lib/pkgconfig:$PKG_CONFIG_PATH"
   fi
-  add_function pyenv-exec 'env-name command' 'execute a command with a specific pyenv version'
-  pyenv-exec () (
-    if [ -z "$1" ]; then
-      functions
-    else
-      pyenv shell $1
-      shift
-      "$@"
-    fi
-  )
+# }
+
+# Readline {
+  READLINE_DIR="/usr/local/opt/readline"
+  if [ -d "$READLINE_DIR" ]; then
+    export LDFLAGS="-L${READLINE_DIR}/lib $LDFLAGS"
+    export CFLAGS="-I${READLINE_DIR}/include $CFLAGS"
+    export CPPFLAGS="-I${READLINE_DIR}/include $CPPFLAGS"
+    export PKG_CONFIG_PATH="${READLINE_DIR}/lib/pkgconfig:$PKG_CONFIG_PATH"
+  fi
 # }
 
 # Go {
