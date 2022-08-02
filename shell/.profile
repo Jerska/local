@@ -125,11 +125,9 @@ set +o noclobber
 # OpenSSL {
   OPENSSL_DIR="${HOMEBREW_PREFIX}/opt/openssl@3"
   if [ -d "$OPENSSL_DIR" ]; then
-    export PATH="${OPENSSL_DIR}/bin:$PATH"
     export LDFLAGS="-L${OPENSSL_DIR}/lib $LDFLAGS"
     export CFLAGS="-I${OPENSSL_DIR}/include $CFLAGS"
     export CPPFLAGS="-I${OPENSSL_DIR}/include $CPPFLAGS"
-    export PKG_CONFIG_PATH="${OPENSSL_DIR}/lib/pkgconfig:$PKG_CONFIG_PATH"
   fi
 # }
 
@@ -139,7 +137,15 @@ set +o noclobber
     export LDFLAGS="-L${READLINE_DIR}/lib $LDFLAGS"
     export CFLAGS="-I${READLINE_DIR}/include $CFLAGS"
     export CPPFLAGS="-I${READLINE_DIR}/include $CPPFLAGS"
-    export PKG_CONFIG_PATH="${READLINE_DIR}/lib/pkgconfig:$PKG_CONFIG_PATH"
+  fi
+# }
+
+# Curl {
+  CURL_DIR="${HOMEBREW_PREFIX}/opt/curl"
+  if [ -d "$CURL_DIR" ]; then
+    export LDFLAGS="-L${CURL_DIR}/lib $LDFLAGS"
+    export CFLAGS="-I${CURL_DIR}/include $CFLAGS"
+    export CPPFLAGS="-I${CURL_DIR}/include $CPPFLAGS"
   fi
 # }
 

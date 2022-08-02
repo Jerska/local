@@ -4,9 +4,11 @@ brew "gcc"
 brew "openssl"
 brew "readline"
 
+brew "bash"
 brew "coreutils"
 brew "jq" # https://stedolan.github.io/jq/
 brew "gnu-sed"
+brew "curl"
 
 brew "vim"
 brew "neovim"
