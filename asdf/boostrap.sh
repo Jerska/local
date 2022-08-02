@@ -11,4 +11,5 @@ asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 
 ln -sf $DIR/.default-npm-packages $HOME/.default-npm-packages
 ln -sf $DIR/.default-python-packages $HOME/.default-python-packages
+ln -sf $DIR/.default-golang-pkgs $HOME/.default-golang-pkgs
 ln -sf $DIR/.default-gems $HOME/.default-gems
