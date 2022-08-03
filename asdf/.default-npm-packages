@@ -1,3 +1,5 @@
 yarn
 neovim
 ngrok
+prettier
+eslint
