@@ -8,6 +8,10 @@
 
 set +o noclobber
 
+# Local binaries {
+  export PATH="$HOME/local/bin/:$PATH"
+# }
+
 # Locale {
   export LC_ALL=en_US.UTF-8
   export LANG=en_US.UTF-8
