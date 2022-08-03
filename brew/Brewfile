@@ -15,6 +15,7 @@ brew "neovim"
 brew "asdf"
 brew "htop"
 brew "ripgrep"
+brew "hub"
 
 tap "homebrew/cask-fonts"
 cask "font-sauce-code-pro-nerd-font"
