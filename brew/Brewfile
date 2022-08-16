@@ -17,5 +17,6 @@ brew "htop"
 brew "ripgrep"
 brew "hub"
 
-tap "homebrew/cask-fonts"
-cask "font-sauce-code-pro-nerd-font"
+cask "homebrew/cask-fonts/font-sauce-code-pro-nerd-font"
+
+brew "derailed/k9s/k9s"
