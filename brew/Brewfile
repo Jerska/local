@@ -5,6 +5,7 @@ brew "openssl"
 brew "readline"
 
 brew "bash"
+brew "zsh"
 brew "coreutils"
 brew "jq" # https://stedolan.github.io/jq/
 brew "gnu-sed"
