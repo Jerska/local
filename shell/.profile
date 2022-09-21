@@ -270,6 +270,23 @@ set +o noclobber
 
 # Docker {
   alias dcup="docker-compose up"
+
+  # From https://stackoverflow.com/a/73108928/1561269
+  add_function dockersize path_to_img:tag 'get the size of a docker image'
+  dockersize() {
+    docker manifest inspect -v "$1" |
+      jq -c 'if type == "array" then .[] else . end' |
+      jq -r '[(
+        .Descriptor.platform |
+        [ .os, .architecture, .variant, ."os.version" ] |
+        del(..|nulls) |
+        join("/")
+      ), (
+        [ .SchemaV2Manifest.layers[].size ] | add
+      )] | join(" ")' |
+      numfmt --to iec --format '%.2f' --field 2 |
+      column -t;
+  }
 # }
 
 # Kubernetes {
