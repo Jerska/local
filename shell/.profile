@@ -65,6 +65,7 @@ set +o noclobber
     export HOMEBREW_PREFIX="/usr/local"
   fi
   export HOMEBREW_NO_AUTO_UPDATE=1
+  export PATH="/$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
   export PATH="/usr/local:$PATH"
 # }
 
