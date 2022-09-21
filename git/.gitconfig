@@ -18,3 +18,5 @@
 	insteadOf = https://github.com/
 [init]
 	defaultBranch = main
+[diff]
+	external = difft
