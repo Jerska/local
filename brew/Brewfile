@@ -17,6 +17,7 @@ brew "asdf"
 brew "htop"
 brew "ripgrep"
 brew "hub"
+brew "difftastic"
 
 cask "homebrew/cask-fonts/font-sauce-code-pro-nerd-font"
 
