@@ -183,6 +183,8 @@ set +o noclobber
   alias gst="git status"
   alias gcm="git commit"
   alias gco="git checkout"
+  alias gdf="git diff"
+  alias gdft="git difftool"
   alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
   # Prune
