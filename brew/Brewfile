@@ -8,6 +8,7 @@ brew "bash"
 brew "zsh"
 brew "coreutils"
 brew "jq" # https://stedolan.github.io/jq/
+brew "yq"
 brew "gnu-sed"
 brew "curl"
 
