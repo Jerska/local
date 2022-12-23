@@ -169,7 +169,7 @@ set +o noclobber
 # }
 
 # RipGrep {
-  if [ -d "${HOMEBREW_PREFIX}/bin" ]; then
+  if [ -f "${HOMEBREW_PREFIX}/bin/rg" ]; then
     alias rg="${HOMEBREW_PREFIX}/bin/rg"
   fi
 # }
