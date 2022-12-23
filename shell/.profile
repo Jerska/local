@@ -65,7 +65,6 @@ set +o noclobber
     export HOMEBREW_PREFIX="/usr/local"
   fi
   export HOMEBREW_NO_AUTO_UPDATE=1
-  export PATH="/$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
   export PATH="/usr/local:$PATH"
 # }
 
@@ -170,7 +169,9 @@ set +o noclobber
 # }
 
 # RipGrep {
-  alias rg="${HOMEBREW_PREFIX}/bin/rg"
+  if [ -d "${HOMEBREW_PREFIX}/bin" ]; then
+    alias rg="${HOMEBREW_PREFIX}/bin/rg"
+  fi
 # }
 
 # FZF {
