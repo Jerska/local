@@ -163,7 +163,7 @@ set +o noclobber
 # }
 
 # Go {
-  GO_VERSION="$(asdf current golang | awk '{ print $2 }')"
+  GO_VERSION="$(asdf current golang | awk '{ print $2 }' | tail -n 1)"
   export GOROOT="/Users/jerska/.asdf/installs/golang/$GO_VERSION/go" # Needed, otherwise gopls explodes
   export GOPATH=$HOME/go
   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
