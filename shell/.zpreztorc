@@ -35,8 +35,7 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'git' \
   'osx' \
-  'syntax-highlighting' \
-  'prompt'
+  'syntax-highlighting'
 
 #
 # directory
