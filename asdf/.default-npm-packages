@@ -3,3 +3,4 @@ neovim
 ngrok
 prettier
 eslint
+@anthropic-ai/claude-code
