@@ -185,6 +185,12 @@ set +o noclobber
   fi
 # }
 
+# Task
+  if [ -d "${HOMEBREW_PREFIX}/Cellar" ] && [ -d "${HOMEBREW_PREFIX}/Cellar/task/" ]; then
+    task_bin="$(echo "${HOMEBREW_PREFIX}/Cellar/task/"*"/bin/task")"
+    alias t="$task_bin"
+  fi
+
 # FZF {
   export FZF_DEFAULT_COMMAND='ripgrep --files --hidden --follow --glob "!.git/*"'
 # }
