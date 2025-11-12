@@ -325,6 +325,71 @@ set +o noclobber
   }
 # }
 
+# Migrate machine {
+  add_function migrate_send file_or_folder 'transmit file or folder over the network (needs migrate_recv on the receiver)'
+  migrate_send() {
+    local path="$1"
+
+    if [[ -z "$path" ]]; then
+      echo "Usage: migrate_send <file_or_folder>" >&2
+      return 1
+    fi
+    if [[ -z "$MIGRATE_HOST" || -z "$MIGRATE_PORT" ]]; then
+      echo "Error: MIGRATE_HOST and MIGRATE_PORT must be set." >&2
+      return 1
+    fi
+
+    local relpath
+    relpath="$(realpath --relative-to="$HOME" "$path")"
+
+    echo "Sending '$relpath' to $MIGRATE_HOST:$MIGRATE_PORT ..." >&2
+    tar -czf - -C "$HOME" "$relpath" | nc "$MIGRATE_HOST" "$MIGRATE_PORT"
+    echo "✅ Sent '$relpath'." >&2
+  }
+
+  add_function migrate_recv '' 'opens a server to copy files from a remote machine (see migrate_send)'
+  migrate_recv() {
+    local port="1234"
+    local myip=""
+
+    # Try to auto-detect local IP (Linux/macOS compatible)
+    myip="$(hostname -I 2>/dev/null | awk '{print $1}')"
+    if [[ -z "$myip" ]]; then
+      myip="$(ipconfig getifaddr en0 2>/dev/null)"
+    fi
+
+    if [[ -z "$myip" ]]; then
+      myip="<could_not_be_found>"
+      echo "⚠️  Warning: Could not determine local IP address automatically." >&2
+      echo "   Replace <could_not_be_found> with your actual IP in the MIGRATE_HOST variable." >&2
+    fi
+
+    cat >&2 <<EOF
+Ready to receive.
+
+On the sender side, first set those two environment variables
+
+export MIGRATE_HOST="$myip"
+export MIGRATE_PORT="$port"
+
+Then call \`migrate_send\` as many times as necessary:
+
+migrate_send "<folder_or_file>"
+migrate_send "<folder_or_file>"
+
+Listening on port $port...
+
+EOF
+
+    while true; do
+      nc -l "$port" | tar -xzf - -C "$HOME"
+      echo "✅ Received and extracted archive. Waiting for next transfer..." >&2
+      sleep 1
+    done
+}
+# }
+
+
 # Kubernetes {
   alias k=kubectl
   alias kw=~/local/shell/kubewatch.sh
