@@ -49,8 +49,6 @@ set +o noclobber
 # }
 
 # Typos {
-  alias sl=ls
-  alias gh=fg
 # }
 
 # OSX {
@@ -186,6 +184,7 @@ set +o noclobber
   alias gco="git checkout"
   alias gdf="git diff"
   alias gdft="git difftool"
+  alias grs="git restore --staged"
   alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
   # Prune
