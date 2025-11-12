@@ -232,6 +232,21 @@ set +o noclobber
   }
 # }
 
+# Github {
+  add_function ghkill '<repo> <runid>' 'Force kill github job'
+
+  ghkill() {
+    local repo="$1"
+    local runid="$2"
+
+    curl -X POST \
+      -H "Accept: application/vnd.github+json" \
+      -H "Authorization: Bearer $(gh auth token)" \
+      -H "X-GitHub-Api-Version: 2022-11-28" \
+      https://api.github.com/repos/${repo}/actions/runs/${runid}/force-cancel
+  }
+# }
+
 # Heroku {
   alias heroku-rebuild="git commit --allow-empty -m 'empty commit' && git push heroku master && git reset HEAD~1 && git push -f heroku master"
 # }
