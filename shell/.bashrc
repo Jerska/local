@@ -1,3 +1,7 @@
+# Starship {
+  eval "$(starship init bash)"
+# }
+
 # FZF {
   [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # }

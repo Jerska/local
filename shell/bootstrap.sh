@@ -9,7 +9,7 @@ ln -sf $DIR/.dir_colors $HOME/.dir_colors
 ln -sf $DIR/.bashrc $HOME/.bashrc
 ln -sf $DIR/.zshrc $HOME/.zshrc
 ln -sf $DIR/.zpreztorc $HOME/.zpreztorc
-ln -sf $DIR/.p10k.zsh $HOME/.p10k.zsh
+ln -sf $DIR/starship.toml $HOME/.config/starship.toml
 
 # If you've installed prezto, those files are useless
 rm -f ~/.zlogin
@@ -19,4 +19,3 @@ rm -f ~/.zprofile
 echo
 echo "You need to:"
 echo "  - fill local/shell/.profile.private"
-echo "  - clone powerlevel10k in local/"

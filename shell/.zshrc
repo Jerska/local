@@ -18,12 +18,8 @@ alias lni="${aliases[ln]:-ln} -i"
 alias mvi="${aliases[mv]:-mv} -i"
 alias rmi="${aliases[rm]:-rm} -i"
 
-# Powerlevel10K {
-  P10K_THEME=~/local/powerlevel10k/powerlevel10k.zsh-theme
-  [[ -f "$P10K_THEME" ]] && source "$P10K_THEME"
-
-  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# Starship {
+  eval "$(starship init zsh)"
 # }
 
 # FZF {

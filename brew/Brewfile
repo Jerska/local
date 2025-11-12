@@ -6,6 +6,8 @@ brew "readline"
 
 brew "bash"
 brew "zsh"
+brew "starship"
+
 brew "coreutils"
 brew "moreutils"
 brew "jq" # https://stedolan.github.io/jq/
