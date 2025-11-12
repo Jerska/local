@@ -335,6 +335,10 @@ set +o noclobber
   source "$HOME/.cargo/env"
 # }
 
+# ulimit {
+  ulimit -n `ulimit -Hn` # Set soft limit of open fds to hard limit
+# }
+
 # Z {
   source "$HOME/local/shell/z.sh"
 # }
