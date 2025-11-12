@@ -328,9 +328,9 @@ set +o noclobber
 # Migrate machine {
   add_function migrate_send file_or_folder 'transmit file or folder over the network (needs migrate_recv on the receiver)'
   migrate_send() {
-    local path="$1"
+    local p="$1"
 
-    if [[ -z "$path" ]]; then
+    if [[ -z "$p" ]]; then
       echo "Usage: migrate_send <file_or_folder>" >&2
       return 1
     fi
@@ -339,8 +339,15 @@ set +o noclobber
       return 1
     fi
 
-    local relpath
-    relpath="$(realpath --relative-to="$HOME" "$path")"
+    local abs_path abs_home relpath
+    abs_path="$(cd "$(dirname "$p")" && pwd)/$(basename "$p")"
+    abs_home="$(cd "$HOME" && pwd)"
+
+    if [[ "$abs_path" == "$abs_home/"* ]]; then
+      relpath="${abs_path#"$abs_home/"}"
+    else
+      relpath="$abs_path"
+    fi
 
     echo "Sending '$relpath' to $MIGRATE_HOST:$MIGRATE_PORT ..." >&2
     tar -czf - -C "$HOME" "$relpath" | nc "$MIGRATE_HOST" "$MIGRATE_PORT"
@@ -386,9 +393,8 @@ EOF
       echo "✅ Received and extracted archive. Waiting for next transfer..." >&2
       sleep 1
     done
-}
+  }
 # }
-
 
 # Kubernetes {
   alias k=kubectl
