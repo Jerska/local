@@ -117,6 +117,7 @@ set +o noclobber
 
 # JavaScript {
   export PATH="./node_modules/.bin/:$PATH"
+  export NODE_PATH="$(npm root -g)"
   alias y="yarn"
 # }
 
@@ -152,6 +153,8 @@ set +o noclobber
 # }
 
 # Go {
+  GO_VERSION="$(asdf current golang | awk '{ print $2 }')"
+  export GOROOT="/Users/jerska/.asdf/installs/golang/$GO_VERSION/go" # Needed, otherwise gopls explodes
   export GOPATH=$HOME/go
   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
   export GO111MODULE=on
@@ -295,6 +298,10 @@ set +o noclobber
   alias k=kubectl
   alias kw=~/local/shell/kubewatch.sh
   alias kn=k9s
+# }
+
+# Rust {
+  source "$HOME/.cargo/env"
 # }
 
 # Z {
