@@ -24,6 +24,8 @@ brew "difftastic"
 brew "shellcheck"
 brew "shfmt"
 
+brew "git-delta"
+
 cask "homebrew/cask-fonts/font-sauce-code-pro-nerd-font"
 
 brew "derailed/k9s/k9s"

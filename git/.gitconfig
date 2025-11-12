@@ -3,6 +3,7 @@
 	name = Matthieu Dumont
 [core]
 	excludesfile = /Users/jerska/.gitignore
+	pager = delta
 [pull]
 	rebase = true
 [alias]
@@ -18,11 +19,12 @@
 	insteadOf = https://github.com/
 [init]
 	defaultBranch = main
-[diff]
-	tool = difftastic
-[difftool]
-	prompt = false
-[difftool "difftastic"]
-	cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-	difftool = true
+[diff "lfs"]
+	textconv = cat
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	side-by-side = true
+[merge]
+	conflictStyle = zdiff3
