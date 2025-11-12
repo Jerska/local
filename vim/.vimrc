@@ -62,7 +62,7 @@
   syntax enable
   set background=dark
 
-  colorscheme solarized8
+  colorscheme sorbet
 
   highlight Search cterm=NONE ctermfg=7 ctermbg=4
 " }
@@ -200,8 +200,7 @@
   set laststatus=2                " Or airline won't activate before a new split
 
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='solarized'
-  let g:airline_solarized_bg='dark'
+  let g:airline_theme='base16_spacemacs'
 " }
 
 " Ale {
