@@ -152,6 +152,16 @@ set +o noclobber
   fi
 # }
 
+# Binutils {
+  BINUTILS_DIR="${HOMEBREW_PREFIX}/opt/binutils"
+  if [ -d "$BINUTILS_DIR" ]; then
+    export PATH="$BINUTILS_DIR/bin:$PATH"
+    export LDFLAGS="-L${BINUTILS_DIR}/lib"
+    export CFLAGS="-I${BINUTILS_DIR}/include"
+    export CPPFLAGS="-I${BINUTILS_DIR}/include"
+  fi
+# }
+
 # Go {
   GO_VERSION="$(asdf current golang | awk '{ print $2 }')"
   export GOROOT="/Users/jerska/.asdf/installs/golang/$GO_VERSION/go" # Needed, otherwise gopls explodes
