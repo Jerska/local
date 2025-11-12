@@ -24,6 +24,6 @@ brew "shfmt"
 brew "hub"
 brew "git-delta"
 
-cask "homebrew/cask-fonts/font-sauce-code-pro-nerd-font"
+cask "font-sauce-code-pro-nerd-font"
 
-brew "derailed/k9s/k9s"
+brew "k9s"
