@@ -9,7 +9,6 @@ brew "zsh"
 brew "coreutils"
 brew "moreutils"
 brew "jq" # https://stedolan.github.io/jq/
-brew "yq"
 brew "gnu-sed"
 brew "curl"
 
@@ -18,12 +17,11 @@ brew "neovim"
 brew "asdf"
 brew "htop"
 brew "ripgrep"
-brew "hub"
-brew "difftastic"
 
 brew "shellcheck"
 brew "shfmt"
 
+brew "hub"
 brew "git-delta"
 
 cask "homebrew/cask-fonts/font-sauce-code-pro-nerd-font"
