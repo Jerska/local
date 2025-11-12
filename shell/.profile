@@ -403,7 +403,9 @@ EOF
 # }
 
 # Rust {
-  source "$HOME/.cargo/env"
+  if [ -d "$HOME/.cargo" ]; then
+    source "$HOME/.cargo/env"
+  fi
 # }
 
 # ulimit {
