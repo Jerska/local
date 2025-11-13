@@ -24,6 +24,8 @@ brew "ripgrep"
 brew "shellcheck"
 brew "shfmt"
 
+brew "bat"
+
 brew "gh"
 brew "git-lfs"
 brew "git-delta"
