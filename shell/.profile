@@ -305,6 +305,10 @@ set +o noclobber
 # }
 
 # Docker {
+  if [ -d "$HOME/.docker/bin" ]; then
+    PATH="$HOME/.docker/bin:$PATH"
+  fi
+
   alias dcup="docker-compose up"
 
   # From https://stackoverflow.com/a/73108928/1561269
