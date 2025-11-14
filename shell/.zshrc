@@ -19,7 +19,9 @@ alias mvi="${aliases[mv]:-mv} -i"
 alias rmi="${aliases[rm]:-rm} -i"
 
 # Starship {
-  eval "$(starship init zsh)"
+  if command -v sharship; then
+    eval "$(starship init zsh)"
+  fi
 # }
 
 # FZF {
