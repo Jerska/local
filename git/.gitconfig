@@ -8,6 +8,7 @@
 	rebase = true
 [alias]
 	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+	alias-master-as-main = !git symbolic-ref refs/heads/main refs/heads/master && git symbolic-ref refs/remotes/origin/main refs/remotes/origin/master && git switch main
 [push]
 	default = current
 [filter "lfs"]
