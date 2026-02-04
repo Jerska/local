@@ -113,6 +113,7 @@ set +o noclobber
 # asdf {
   alias qsdf="asdf"
   [ -f ${HOMEBREW_PREFIX}/opt/asdf/libexec/asdf.sh ] && source ${HOMEBREW_PREFIX}/opt/asdf/libexec/asdf.sh
+  [ -d ~/.asdf/shims ] && export PATH="$HOME/.asdf/shims:$PATH"
 # }
 
 # JavaScript {
