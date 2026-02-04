@@ -25,6 +25,7 @@ alias rmi="${aliases[rm]:-rm} -i"
 # }
 
 # FZF {
+  [ -d ~/.fzf/bin ] && export PATH="$HOME/.fzf/bin:$PATH"
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }
 
